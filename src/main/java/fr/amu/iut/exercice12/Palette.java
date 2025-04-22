@@ -1,5 +1,6 @@
-package fr.amu.iut.exercice2;
+/*package fr.amu.iut.exercice12;
 
+import fr.amu.iut.exercice9.CustomButton;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -78,5 +79,5 @@ public class Palette extends Application {
         primaryStage.show();
     }
 
-}
+}*/
 

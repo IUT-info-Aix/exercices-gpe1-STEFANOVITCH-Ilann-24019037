@@ -14,9 +14,11 @@ public class Conteneurs extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("fenetre.fxml"));
+        FXMLLoader root = new  FXMLLoader(getClass().getClassLoader().getResource("exercice10/ConteneursView.fxml"));
         primaryStage.setTitle("Premier exemple manipulant les conteneurs");
-        primaryStage.setScene(new Scene(root, 500, 300));
+        Scene scene =new Scene(root.load());
+        primaryStage.setScene( scene );
+
         primaryStage.show();
     }
 }
