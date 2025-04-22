@@ -7,8 +7,4 @@ public class Obstacles extends Rectangle {
             super(x, y, width, height);
         }
 
-
-
-
-
 }
