@@ -2,12 +2,15 @@
 
  import javafx.application.Application;
  import javafx.geometry.Insets;
+ import javafx.geometry.Orientation;
+ import javafx.geometry.Pos;
  import javafx.scene.Scene;
  import javafx.scene.control.*;
  import javafx.scene.layout.*;
  import javafx.stage.Stage;
+ import javafx.stage.StageStyle;
 
- public class FenetreLogiciel extends Application {
+  public class FenetreLogiciel extends Application {
 
      @Override
      public void start(Stage primaryStage) {
@@ -50,7 +53,7 @@
          );
 
          HBox leftPanel = new HBox();
-         leftPanel.getChildren().addAll(leftButtons, new Separator());
+         leftPanel.getChildren().addAll(leftButtons, new Separator(Orientation.VERTICAL));
 
          GridPane form = new GridPane();
          form.setPadding(new Insets(10));
@@ -74,6 +77,7 @@
          Label bottomLabel = new Label("Ceci est un label de bas de page");
          VBox bottomBox = new VBox(new Separator(), bottomLabel);
          bottomBox.setPadding(new Insets(5));
+         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
          BorderPane root = new BorderPane();
          root.setTop(topBox);
@@ -83,6 +87,7 @@
 
          Scene scene = new Scene(root, 500, 300);
          primaryStage.setScene(scene);
+         //primaryStage.initStyle(StageStyle.UNDECORATED);
          primaryStage.show();
      }
 
