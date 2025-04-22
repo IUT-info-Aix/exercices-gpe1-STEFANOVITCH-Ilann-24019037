@@ -26,7 +26,7 @@ public class Animation extends Application {
 
         transition1.setByX(150);
         transition1.setByY(-150);
-        transition1.setAutoReverse(false); // Désactiver l'auto-reverse pour chaque transition
+        transition1.setAutoReverse(false);
         transition1.setCycleCount(1);
 
         transition2.setByX(-300);
@@ -45,16 +45,10 @@ public class Animation extends Application {
         transition5.setAutoReverse(false);
         transition5.setCycleCount(1);
 
-        // Créer une séquence pour l'animation dans le sens normal
         SequentialTransition forwardSequence = new SequentialTransition(transition1, transition2, transition3, transition4, transition5);
 
-        // Créer une séquence pour l'animation en sens inverse
-        SequentialTransition reverseSequence = new SequentialTransition(transition5, transition4, transition3, transition2, transition1);
 
-        // Combiner les deux séquences dans une séquence globale
-        SequentialTransition fullSequence = new SequentialTransition(forwardSequence, reverseSequence);
-
-        customButton.setOnMousePressed(mouseEvent -> fullSequence.play());
+        customButton.setOnMousePressed(mouseEvent -> forwardSequence.play());
 
         primaryStage.setTitle("Animation");
         primaryStage.setScene(scene);

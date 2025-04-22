@@ -13,7 +13,6 @@
      public void start(Stage primaryStage) {
          primaryStage.setTitle("Premier exemple manipulant les conteneurs");
 
-         // === Barre de menu ===
          MenuBar menuBar = new MenuBar();
 
          Menu fileMenu = new Menu("File");
@@ -37,7 +36,7 @@
 
          menuBar.getMenus().addAll(fileMenu, editMenu, helpMenu);
 
-         /// ////////////////////////////////////////////////////////////////////////
+         ////////////////////////////////////////////////////////////////////////////////
 
          VBox leftButtons = new VBox(10);
          leftButtons.setPadding(new Insets(10));
