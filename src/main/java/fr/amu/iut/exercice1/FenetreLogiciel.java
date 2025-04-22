@@ -36,6 +36,8 @@
 
          menuBar.getMenus().addAll(fileMenu, editMenu, helpMenu);
 
+         VBox topBox = new VBox(menuBar, new Separator());
+
          ////////////////////////////////////////////////////////////////////////////////
 
          VBox leftButtons = new VBox(10);
@@ -74,7 +76,6 @@
          bottomBox.setPadding(new Insets(5));
 
          BorderPane root = new BorderPane();
-         VBox topBox = new VBox(menuBar, new Separator());
          root.setTop(topBox);
          root.setLeft(leftPanel);
          root.setCenter(form);
