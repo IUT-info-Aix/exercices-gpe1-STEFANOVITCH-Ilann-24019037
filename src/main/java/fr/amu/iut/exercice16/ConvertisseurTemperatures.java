@@ -7,8 +7,10 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -22,22 +24,33 @@ public class ConvertisseurTemperatures extends Application {
         DoubleProperty celsius = new SimpleDoubleProperty(0);
         DoubleProperty fahrenheit = new SimpleDoubleProperty(32);
 
-        // Créer les Sliders
         Slider celsiusSlider = new Slider(0, 100, 0);
-        Slider fahrenheitSlider = new Slider(32, 212, 32);
+        Slider fahrenheitSlider = new Slider(0, 212, 0);
+
+        celsiusSlider.setShowTickLabels(true);
+        celsiusSlider.setShowTickMarks(true);
+        celsiusSlider.setShowTickMarks(true);
+        celsiusSlider.setMajorTickUnit(10);
+        celsiusSlider.setMinorTickCount(1);
+        celsiusSlider.setBlockIncrement(10);
+
+        fahrenheitSlider.setShowTickLabels(true);
+        fahrenheitSlider.setShowTickMarks(true);
+        fahrenheitSlider.setShowTickMarks(true);
+        fahrenheitSlider.setMajorTickUnit(10);
+        fahrenheitSlider.setMinorTickCount(1);
+        fahrenheitSlider.setBlockIncrement(10);
+
 
         celsiusSlider.setOrientation(Orientation.VERTICAL);
         fahrenheitSlider.setOrientation(Orientation.VERTICAL);
 
-        // Créer les TextFields
         TextField celsiusTextField = new TextField("0.00");
         TextField fahrenheitTextField = new TextField("32.00");
 
-        // Binding bidirectionnel entre les propriétés et les Sliders
         celsius.bindBidirectional(celsiusSlider.valueProperty());
         fahrenheit.bindBidirectional(fahrenheitSlider.valueProperty());
 
-        // Binding bidirectionnel entre les propriétés et les TextFields
         Bindings.bindBidirectional(celsiusTextField.textProperty(), celsius, new NumberStringConverter("0.00"));
         Bindings.bindBidirectional(fahrenheitTextField.textProperty(), fahrenheit, new NumberStringConverter("0.00"));
 
@@ -54,12 +67,16 @@ public class ConvertisseurTemperatures extends Application {
             celsius.set(celsiusValue);
         });
 
+        Label celsiusLabel = new Label("Celsius");
+        Label fahrenheitLabel = new Label("Fahrenheit");
         // Disposition des éléments
-        HBox sliders = new HBox(10, celsiusSlider, fahrenheitSlider);
-        HBox textFields = new HBox(10, celsiusTextField, fahrenheitTextField);
+        VBox celsiusVbox = new VBox(10,celsiusLabel, celsiusSlider,celsiusTextField );
+        VBox fahrenheitVbox = new VBox(10, fahrenheitLabel ,fahrenheitSlider, fahrenheitTextField);
 
-        HBox root = new HBox(10, sliders, textFields);
+        HBox root = new HBox(10, celsiusVbox, fahrenheitVbox);
         root.setPadding(new Insets(10));
+
+
 
         Scene scene = new Scene(root, 300, 400);
 
