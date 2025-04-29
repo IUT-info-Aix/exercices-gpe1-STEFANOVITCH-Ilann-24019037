@@ -13,14 +13,12 @@ class Personnage extends Group {
     protected final static double LARGEUR_PERSONNAGE = LARGEUR_MOITIE_PERSONNAGE * 2;
     private final Circle corps;
     private String direction;
-    private Bounds Pos = null;
 
     public Personnage(String direction, Color couleurContour, Color couleurRemplissage) {
         this.direction = direction;
         corps = new Circle(10, 10, LARGEUR_MOITIE_PERSONNAGE, couleurContour);
         corps.setFill(couleurRemplissage);
         getChildren().add(corps);
-        Pos = getBoundsInParent();
     }
 
 

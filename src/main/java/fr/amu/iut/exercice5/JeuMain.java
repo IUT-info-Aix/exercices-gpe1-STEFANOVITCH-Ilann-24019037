@@ -28,7 +28,7 @@ public class JeuMain extends Application {
         fantome.setLayoutX(20 * 10);
         // Panneau du jeu
         Pane jeu = new Pane();
-        jeu.setPrefSize(640, 480);
+        jeu.setPrefSize(480, 480);
         jeu.getChildren().add(pacman);
         jeu.getChildren().add(fantome);
 
