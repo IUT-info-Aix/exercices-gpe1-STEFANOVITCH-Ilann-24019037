@@ -19,9 +19,13 @@ import javafx.util.converter.NumberStringConverter;
 
 public class ConvertisseurTemperatures extends Application {
 
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setHeight(300);
+        HBox root = new HBox(10);
+        Scene scene = new Scene(root, 200, 400);
+
 
 
         // Créer les propriétés pour les températures
@@ -37,7 +41,6 @@ public class ConvertisseurTemperatures extends Application {
         celsiusSlider.setMajorTickUnit(10);
         celsiusSlider.setMinorTickCount(1);
         celsiusSlider.setBlockIncrement(10);
-        celsiusSlider.setPrefHeight(250);
 
         fahrenheitSlider.setShowTickLabels(true);
         fahrenheitSlider.setShowTickMarks(true);
@@ -45,10 +48,10 @@ public class ConvertisseurTemperatures extends Application {
         fahrenheitSlider.setMajorTickUnit(10);
         fahrenheitSlider.setMinorTickCount(1);
         fahrenheitSlider.setBlockIncrement(10);
-        fahrenheitSlider.setPrefHeight(250);
 
-        fahrenheitSlider.setMinSize(primaryStage.getHeight(),primaryStage.getWidth()/2);
-        celsiusSlider.setMinSize(primaryStage.getHeight(),primaryStage.getWidth()/2);
+        fahrenheitSlider.prefHeightProperty().bind(scene.heightProperty().subtract(80));
+        celsiusSlider.prefHeightProperty().bind(scene.heightProperty().subtract(80));
+
 
         celsiusSlider.setOrientation(Orientation.VERTICAL);
         fahrenheitSlider.setOrientation(Orientation.VERTICAL);
@@ -58,6 +61,10 @@ public class ConvertisseurTemperatures extends Application {
 
         celsius.bindBidirectional(celsiusSlider.valueProperty());
         fahrenheit.bindBidirectional(fahrenheitSlider.valueProperty());
+
+
+//        fahrenheitSlider.prefHeightProperty().bind(primaryStage.maxHeightProperty());
+//        celsiusSlider.prefHeightProperty().bind(primaryStage.maxHeightProperty());
 
         Bindings.bindBidirectional(celsiusTextField.textProperty(), celsius, new NumberStringConverter("0.00"));
         Bindings.bindBidirectional(fahrenheitTextField.textProperty(), fahrenheit, new NumberStringConverter("0.00"));
@@ -85,16 +92,19 @@ public class ConvertisseurTemperatures extends Application {
         celsiusVbox.setMinWidth(primaryStage.getWidth()/2);
         celsiusVbox.setMinHeight(primaryStage.getHeight());
         VBox fahrenheitVbox = new VBox(10, fahrenheitLabel ,fahrenheitSlider, fahrenheitTextField);
-        fahrenheitVbox.setMinHeight(300);
         fahrenheitVbox.setMinWidth(primaryStage.getWidth()/2);
         fahrenheitVbox.setMinHeight(primaryStage.getHeight());
 
-        HBox root = new HBox(10, celsiusVbox, fahrenheitVbox);
+
+
+
+        root.getChildren().add(celsiusVbox);
+        root.getChildren().add(fahrenheitVbox);
 
         root.setMinHeight(400);
         root.setPadding(new Insets(10));
 
-        Scene scene = new Scene(root, 200, 400);
+
 
         primaryStage.setTitle("Conversion de Température");
         primaryStage.setScene(scene);
