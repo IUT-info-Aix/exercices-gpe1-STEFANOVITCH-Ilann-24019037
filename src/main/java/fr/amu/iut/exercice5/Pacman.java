@@ -18,7 +18,7 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerAGauche(double largeurJeu,ArrayList<Obstacles> list) {
+    public void deplacerAGauche(double largeurJeu,ArrayList<Obstacle> list) {
         super.deplacerAGauche(largeurJeu,list);
         if (contactMur(list)) super.deplacerADroite(largeurJeu, list);
         bouche.setEndX(bouche.getStartX() - LARGEUR_MOITIE_PERSONNAGE + .5);
@@ -26,7 +26,7 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerADroite(double largeurJeu,ArrayList<Obstacles> list) {
+    public void deplacerADroite(double largeurJeu,ArrayList<Obstacle> list) {
         super.deplacerADroite(largeurJeu,list);
         if (contactMur(list)) super.deplacerAGauche(largeurJeu, list);
         bouche.setEndX(bouche.getStartX() + LARGEUR_MOITIE_PERSONNAGE - .5);
@@ -34,7 +34,7 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerEnBas(double hauteurJeu,ArrayList<Obstacles> list) {
+    public void deplacerEnBas(double hauteurJeu,ArrayList<Obstacle> list) {
         super.deplacerEnBas(hauteurJeu,list);
         if (contactMur(list)) super.deplacerEnHaut(hauteurJeu, list);
         bouche.setEndX(bouche.getStartX() );
@@ -42,14 +42,14 @@ public class Pacman extends Personnage {
     }
 
     @Override
-    public void deplacerEnHaut(double hauteurJeu,ArrayList<Obstacles> list) {
+    public void deplacerEnHaut(double hauteurJeu,ArrayList<Obstacle> list) {
         super.deplacerEnHaut(hauteurJeu,list);
         if (contactMur(list)) super.deplacerEnBas(hauteurJeu, list);
         bouche.setEndX(bouche.getStartX() );
         bouche.setEndY(bouche.getStartY()-LARGEUR_MOITIE_PERSONNAGE + .5);
     }
     @Override
-    public void deplacrcontinue(double largeurJeu,double hauteurJeu,ArrayList<Obstacles> list){
+    public void deplacrcontinue(double largeurJeu,double hauteurJeu,ArrayList<Obstacle> list){
         super.deplacrcontinue(largeurJeu,hauteurJeu,list);
     }
 }

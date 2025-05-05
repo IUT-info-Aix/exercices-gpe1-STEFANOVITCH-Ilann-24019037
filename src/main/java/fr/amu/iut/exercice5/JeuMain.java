@@ -8,7 +8,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class JeuMain extends Application {
@@ -32,8 +31,8 @@ public class JeuMain extends Application {
         jeu.getChildren().add(pacman);
         jeu.getChildren().add(fantome);
 
-        Obstacles obs = new Obstacles(100,10,100,100);
-        ArrayList  <Obstacles> obstacles =new ArrayList<>();
+        Obstacle obs = new Obstacle(100,10,100,100);
+        ArrayList  <Obstacle> obstacles =new ArrayList<>();
         obstacles.add(obs);
         for (int i =0; i<obstacles.size();i++){jeu.getChildren().add(obstacles.get(i));}
 
@@ -55,7 +54,7 @@ public class JeuMain extends Application {
      * @param j1
      * @param j2
      */
-    private void deplacer(Personnage j1, Personnage j2,Stage primaryStage,ArrayList <Obstacles> list) {
+    private void deplacer(Personnage j1, Personnage j2,Stage primaryStage,ArrayList <Obstacle> list) {
         scene.setOnKeyPressed((KeyEvent event) -> {
             if (Partieconte%2 == 0){
                 switch (event.getCode() ){

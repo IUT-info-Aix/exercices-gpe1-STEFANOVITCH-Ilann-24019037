@@ -40,7 +40,7 @@ public class Fantome extends Personnage {
     }
 
     @Override
-    public void deplacerAGauche(double largeurJeu, ArrayList<Obstacles> list) {
+    public void deplacerAGauche(double largeurJeu, ArrayList<Obstacle> list) {
         super.deplacerAGauche(largeurJeu,list);
         if (contactMur(list)) super.deplacerADroite(largeurJeu, list);
         retineDroite.setCenterX(oeilDroit.getCenterX()-1);
@@ -48,13 +48,13 @@ public class Fantome extends Personnage {
     }
 
     @Override
-    public void deplacerADroite(double largeurJeu, ArrayList<Obstacles> list) {
+    public void deplacerADroite(double largeurJeu, ArrayList<Obstacle> list) {
         super.deplacerADroite(largeurJeu,list);
         if (contactMur(list)) super.deplacerAGauche(largeurJeu, list);
     }
 
     @Override
-    public void deplacerEnBas(double hauteurJeu, ArrayList<Obstacles> list) {
+    public void deplacerEnBas(double hauteurJeu, ArrayList<Obstacle> list) {
         super.deplacerEnBas(hauteurJeu,list);
         if (contactMur(list)) super.deplacerEnHaut(hauteurJeu, list);
         retineDroite.setCenterX(oeilDroit.getCenterX());
@@ -64,7 +64,7 @@ public class Fantome extends Personnage {
     }
 
     @Override
-    public void deplacerEnHaut(double hauteurJeu, ArrayList<Obstacles> list) {
+    public void deplacerEnHaut(double hauteurJeu, ArrayList<Obstacle> list) {
         super.deplacerEnHaut(hauteurJeu,list);
         if (contactMur(list)) super.deplacerEnBas(hauteurJeu, list);
         retineDroite.setCenterX(oeilDroit.getCenterX());
@@ -73,7 +73,7 @@ public class Fantome extends Personnage {
         retineGauche.setCenterY(oeilGauche.getCenterY()-1);
     }
     @Override
-    public void deplacrcontinue(double largeurJeu,double hauteurJeu,ArrayList<Obstacles> list){
+    public void deplacrcontinue(double largeurJeu,double hauteurJeu,ArrayList<Obstacle> list){
         super.deplacrcontinue(largeurJeu,hauteurJeu,list);
     }
 }

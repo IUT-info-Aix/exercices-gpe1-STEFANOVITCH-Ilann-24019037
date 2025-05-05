@@ -1,7 +1,5 @@
 package fr.amu.iut.exercice5;
 
-import javafx.geometry.BoundingBox;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -22,7 +20,7 @@ class Personnage extends Group {
     }
 
 
-    public void deplacerAGauche(double largeurJeu ,ArrayList<Obstacles> list) {
+    public void deplacerAGauche(double largeurJeu ,ArrayList<Obstacle> list) {
 
         if (getLayoutX() >= LARGEUR_PERSONNAGE) {
             setLayoutX(getLayoutX() - LARGEUR_PERSONNAGE);
@@ -33,7 +31,7 @@ class Personnage extends Group {
 
     }
 
-    public void deplacerADroite(double largeurJeu,ArrayList<Obstacles> list) {
+    public void deplacerADroite(double largeurJeu,ArrayList<Obstacle> list) {
 
         if (getLayoutX() < largeurJeu - LARGEUR_PERSONNAGE) {
             setLayoutX(getLayoutX() + LARGEUR_PERSONNAGE);
@@ -43,7 +41,7 @@ class Personnage extends Group {
         }
     }
 
-    public void deplacerEnBas(double hauteurJeu,ArrayList<Obstacles> list) {
+    public void deplacerEnBas(double hauteurJeu,ArrayList<Obstacle> list) {
 
         if (getLayoutY() < hauteurJeu - LARGEUR_PERSONNAGE) {
             setLayoutY(getLayoutY() + LARGEUR_PERSONNAGE);
@@ -53,7 +51,7 @@ class Personnage extends Group {
         }
     }
 
-    public void deplacerEnHaut(double hauteurJeu,ArrayList<Obstacles> list) {
+    public void deplacerEnHaut(double hauteurJeu,ArrayList<Obstacle> list) {
 
         if (getLayoutY() >= LARGEUR_PERSONNAGE) {
             setLayoutY(getLayoutY() - LARGEUR_PERSONNAGE);
@@ -64,7 +62,7 @@ class Personnage extends Group {
 
     }
 
-    public void deplacrcontinue(double largeurJeu,double hauteurJeu,ArrayList<Obstacles> list){
+    public void deplacrcontinue(double largeurJeu,double hauteurJeu,ArrayList<Obstacle> list){
         switch (direction){
             case "gauche":
                 deplacerAGauche(largeurJeu,list);
@@ -104,15 +102,15 @@ class Personnage extends Group {
 
     }
 
-    public double estEnCollision(Personnage autrePersonnage, ArrayList <Obstacles> list) {
+    public double estEnCollision(Personnage autrePersonnage, ArrayList <Obstacle> list) {
         double R;
         R = 0; // 0 pas de contact 1 contact entre les joueurs et 2 contact entre joueur  Qui lance la commende et mur et 3 si l'autrePersonnage est en contact avec le mur
 
-        for (Obstacles obstacles : list) {
-            if (getBoundsInParent().contains(obstacles.getBoundsInParent()) || obstacles.getBoundsInParent().contains(getBoundsInParent())) {
+        for (Obstacle obstacle : list) {
+            if (getBoundsInParent().contains(obstacle.getBoundsInParent()) || obstacle.getBoundsInParent().contains(getBoundsInParent())) {
                 R = 2;
             }
-            if (autrePersonnage.getBoundsInParent().contains(obstacles.getBoundsInParent()) || obstacles.getBoundsInParent().contains(autrePersonnage.getBoundsInParent())) {
+            if (autrePersonnage.getBoundsInParent().contains(obstacle.getBoundsInParent()) || obstacle.getBoundsInParent().contains(autrePersonnage.getBoundsInParent())) {
                 R = 3;
             }
         }
@@ -124,10 +122,10 @@ class Personnage extends Group {
 
     }
 
-    public Boolean contactMur( ArrayList <Obstacles> list){
+    public Boolean contactMur( ArrayList <Obstacle> list){
         Boolean R = false;
-        for (Obstacles obstacles : list) {
-            if (getBoundsInParent().contains(obstacles.getBoundsInParent()) || obstacles.getBoundsInParent().contains(getBoundsInParent())) {
+        for (Obstacle obstacle : list) {
+            if (getBoundsInParent().contains(obstacle.getBoundsInParent()) || obstacle.getBoundsInParent().contains(getBoundsInParent())) {
                 R = true;
                 break;
             }
