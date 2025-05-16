@@ -62,10 +62,6 @@ public class ConvertisseurTemperatures extends Application {
         celsius.bindBidirectional(celsiusSlider.valueProperty());
         fahrenheit.bindBidirectional(fahrenheitSlider.valueProperty());
 
-
-//        fahrenheitSlider.prefHeightProperty().bind(primaryStage.maxHeightProperty());
-//        celsiusSlider.prefHeightProperty().bind(primaryStage.maxHeightProperty());
-
         Bindings.bindBidirectional(celsiusTextField.textProperty(), celsius, new NumberStringConverter("0.00"));
         Bindings.bindBidirectional(fahrenheitTextField.textProperty(), fahrenheit, new NumberStringConverter("0.00"));
 
